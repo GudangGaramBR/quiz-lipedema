@@ -1,0 +1,98 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="./style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- VTurb/ConverteAI preload (VSL 1 + VSL 2) -->
+<script>
+  !function(i,n){
+    i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())
+  }(window,performance);
+</script>
+
+<!-- smartplayer (1x) -->
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+
+<!-- player.js (VSL 1 e VSL 2) -->
+<link rel="preload" href="https://scripts.converteai.net/b6a53cb5-aa1a-47b3-af2b-b93c7fe8b86c/players/697c366c02e0aee2dde139e2/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/b6a53cb5-aa1a-47b3-af2b-b93c7fe8b86c/players/697c36775c7f3683791b5a5a/v4/player.js" as="script">
+
+<!-- streams (VSL 1 e VSL 2) -->
+<link rel="preload" href="https://cdn.converteai.net/b6a53cb5-aa1a-47b3-af2b-b93c7fe8b86c/697c3664e6c02d41bfd775ed/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/b6a53cb5-aa1a-47b3-af2b-b93c7fe8b86c/697c366ee6c02d41bfd775fb/main.m3u8" as="fetch">
+
+<!-- dns-prefetch (1x) -->
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+  <!-- LOGO (acima da barra) -->
+  <div class="topLogo">
+    <img src="./images/logo.webp" alt="Protocolo Lipedema Adiós en 22D">
+  </div>
+
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div id="screen"></div>
+  <div class="row" id="nav">
+    <button class="btn" id="back">Volver</button>
+    <button class="btn" id="next">Continuar</button>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Etapas -->
+<script src="./steps/step_intro.js"></script>
+<script src="./steps/step_02_agua.js"></script>
+<script src="./steps/step_03_rutina.js"></script>
+<script src="./steps/step_04_estagios.js"></script>
+<script src="./steps/step_05_noticia.js"></script>
+<script src="./steps/step_06_alimentos.js"></script>
+<script src="./steps/step_07_sabias.js"></script>
+
+<script src="./steps/step_video_01.js"></script>
+
+<script src="./steps/step_09_convives.js"></script>
+<script src="./steps/step_10_frecuencia.js"></script>
+<script src="./steps/step_11_dolor.js"></script>
+<script src="./steps/step_12_restriccion.js"></script>
+<script src="./steps/step_13_ropas.js"></script>
+<script src="./steps/step_14_sientes_hinchazon.js"></script>
+<script src="./steps/step_15_al_tocar.js"></script>
+<script src="./steps/step_16a_marcas_img.js"></script>
+<script src="./steps/step_video_02.js"></script>
+
+
+
+<script src="./steps/step_18_proximas_preguntas.js"></script>
+<script src="./steps/step_19_te_gustaria.js"></script>
+<script src="./steps/step_20_quieres.js"></script>
+<script src="./steps/step_21_todo_necesita.js"></script>
+
+<script src="./steps/step_22_carregamento1.js"></script>
+<script src="./steps/step_23_resultado.js"></script>
+<script src="./steps/step_24_nada_funciona.js"></script>
+<script src="./steps/step_25_conozca.js"></script>
+<script src="./steps/step_26_desea.js"></script>
+<script src="./steps/step_27_sucede.js"></script>
+
+<script src="./steps/step_28_carregamento2.js"></script>
+<script src="./steps/step_final_offer.js"></script>
+
+<!-- Motor do quiz -->
+<script src="./quiz.js"></script>
+
+</body>
+</html>

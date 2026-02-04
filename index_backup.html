@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protocolo Lipedema</title>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#ffffff; color:#111 }
+    .wrap { max-width:720px; margin:0 auto; padding:20px }
+    .progress { height:8px; background:#eee; border-radius:999px; overflow:hidden; margin-bottom:18px }
+    .bar { height:8px; width:0%; background:#7b3fe4 }
+    .q { font-size:20px; font-weight:800; color:#7b3fe4 }
+    .opt { width:100%; padding:14px; border-radius:14px; border:none; margin:10px 0; font-size:16px; cursor:pointer }
+    .btn { background:#7b3fe4; color:#fff; font-weight:800 }
+    .alert { background:#ffecec; color:#b00000; padding:12px; border-radius:12px; font-size:13px; margin-top:14px }
+    img { max-width:100% }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div id="screen"></div>
+</div>
+
+<script>
+let step = -1;
+
+const QUIZ = [
+  {
+    text: "¿Sientes dolor o sensibilidad en las piernas?",
+    options: ["Sí", "A veces", "No"]
+  },
+  {
+    text: "¿La hinchazón empeora al final del día?",
+    options: ["Sí", "No"]
+  }
+];
+
+const screen = document.getElementById("screen");
+const bar = document.getElementById("bar");
+
+function render() {
+
+  if (step === -1) {
+    screen.innerHTML = `
+      <div style="text-align:center">
+        <h2 class="q">ELIMINA LA GRASA INFLAMADA DEL LIPEDEMA</h2>
+        <p>Test rápido de 2 minutos para recibir el protocolo personalizado.</p>
+
+        <img src="antes-despues.png" style="margin:16px 0;border-radius:16px">
+
+        <button class="opt btn" id="start">INICIAR CONSULTA</button>
+
+        <div class="alert">
+          ⚠️ Solo una consulta disponible.<br>
+          Si sales de esta página, perderás esta oportunidad.
+        </div>
+      </div>
+    `;
+
+    document.getElementById("start").onclick = () => {
+      step = 0;
+      render();
+    };
+
+    bar.style.width = "0%";
+    return;
+  }
+
+  const q = QUIZ[step];
+  bar.style.width = ((step) / QUIZ.length * 100) + "%";
+
+  screen.innerHTML = `
+    <h3 class="q">${q.text}</h3>
+    ${q.options.map(o => `<button class="opt btn">${o}</button>`).join("")}
+  `;
+
+  document.querySelectorAll(".opt").forEach(btn => {
+    btn.onclick = () => {
+      step++;
+      if (step < QUIZ.length) {
+        render();
+      } else {
+        window.location.href = "https://pay.hotmart.com/SEULINK?src=quiz_lipedema";
+      }
+    };
+  });
+}
+
+render();
+</script>
+</body>
+</html>

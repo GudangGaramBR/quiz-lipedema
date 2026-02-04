@@ -1,0 +1,524 @@
+body {
+  font-family: 'Poppins', system-ui, Arial, sans-serif;
+  margin: 0;
+}
+
+.wrap { max-width: 520px; margin: 0 auto; padding: 20px; }
+.card { border-radius: 18px; padding: 20px; }
+
+.progress { height: 8px; background:#eee; border-radius:999px; overflow:hidden; margin-bottom: 18px; }
+.bar { height: 8px; width: 0%; background:#7b3fe4; }
+
+.q { font-size: 20px; font-weight: 800; color:#7b3fe4; }
+
+p {
+  font-size: 14px;      /* 👈 maior */
+  font-weight: 400;
+  line-height: 1.65;    /* 👈 mais confortável */
+  color: #333;
+}
+
+.opt {
+  width: 100%;
+  text-align: left;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btnPrimary {
+  background: #7b3fe4;
+  color: #fff;
+  border: none;
+}
+
+.alert { background:#ffecec; color:#b00000; padding:12px; border-radius: 12px; font-size: 13px; margin-top: 14px; }
+.row { display:flex; gap:10px; margin-top: 14px; }
+#nav { display:none; } /* esconde navegação por padrão */
+
+/* ===== Botões (fonte + centralização) ===== */
+button,
+.opt,
+.btnPrimary {
+  font-family: 'Poppins', system-ui, Arial, sans-serif;
+}
+
+/* Centralização APENAS para botões padrão (não mexe no gridCard) */
+.opt:not(.gridCard),
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ===== Hover suave (desktop) ===== */
+.opt:not(.gridCard),
+.btnPrimary {
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.opt:not(.gridCard):hover,
+.btnPrimary:hover {
+  background: #6a32d6;
+  box-shadow: 0 6px 16px rgba(123, 63, 228, 0.25);
+}
+
+.opt:not(.gridCard):active,
+.btnPrimary:active {
+  background: #5c28c0;
+}
+
+
+/* ===== Animação automática de cor (sem pulo) ===== */
+.btnPrimary.ctaPulse {
+  animation: ctaPulseBg 2.2s ease-in-out infinite;
+}
+
+@keyframes ctaPulseBg {
+  0%, 100% { background: #7b3fe4; }
+  50%      { background: #bb96fa; }
+}
+
+/* Opções estilo "card" (igual ao print) */
+.optionCard {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 14px 14px;
+  width: 100%;
+  margin: 12px 0;
+  cursor: pointer;
+
+  /* layout */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  /* mantém texto alinhado como card */
+  text-align: left;
+
+  /* tira qualquer animação de CTA se existir */
+  animation: none;
+}
+
+.optionCard:hover {
+  border-color: #d9c9ff;
+  box-shadow: 0 8px 20px rgba(123, 63, 228, 0.08);
+}
+
+.optionIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f3ecff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex: 0 0 44px;
+}
+
+/* Texto principal das opções */
+.optionLabel {
+  font-weight: 800;
+  font-size: 16.5px;   /* 👈 sobe mais um pouco */
+  line-height: 1.25;
+}
+
+/* Texto secundário (parênteses) */
+.optionDesc {
+  font-size: 15px;     /* 👈 igual ao “premium” */
+  line-height: 1.55;
+  color: #444;
+}
+
+
+
+/* ===== Grid 2 colunas (cards com imagem) ===== */
+.optionsGrid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.gridCard {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: none; /* evita pulse em cards */
+}
+
+.gridCard:hover {
+  border-color: #d9c9ff;
+  box-shadow: 0 8px 20px rgba(123, 63, 228, 0.08);
+}
+
+.gridImgWrap {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+}
+
+.gridImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gridLabel {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 14px;
+  color: #111;
+}
+
+.gridDesc {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.35;
+}
+
+
+@media (max-width: 420px) {
+  .optionsGrid2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .gridCard {
+    padding: 10px;
+  }
+
+  .gridLabel {
+    font-size: 13px;
+  }
+
+  .gridDesc {
+    font-size: 11px;
+  }
+}
+
+/* ===== Education layout ===== */
+.eduTitle {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 10px 0 10px;
+  color: #7b3fe4;
+}
+
+/* Variante “sabias” com badge */
+.edu-sabias .eduTitle {
+  display: inline-block;
+  background: #ff2d2d;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.eduText {
+  font-size: 17px;        /* 👈 maior e mais legível */
+  line-height: 1.7;      /* 👈 respiro editorial */
+  max-width: 560px;      /* 👈 mais largura como no original */
+  margin: 0 auto 18px;
+  color: #111;
+}
+
+
+/* Destaques no texto */
+.hl-purple { color: #7b3fe4; }
+.hl-red { color: #ff2d2d; }
+
+/* Card da imagem */
+.mediaCard {
+  max-width: 520px;
+  margin: 12px auto 16px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.mediaImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.topQuestionImageWrap {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  background: #fff;
+  margin: 10px 0 6px;
+}
+
+.topQuestionImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.videoCard{
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #eee;
+  margin: 10px 0 14px;
+}
+
+/* ===== RESULT STEP COM IMAGENS ===== */
+
+.resultImgTop{
+  display:block;
+  margin: 16px auto 10px;
+  max-width: 180px;
+  width: 100%;
+}
+
+.resultImgBody{
+  display:block;
+  margin: 10px auto 16px;
+  max-width: 240px;
+  width: 100%;
+}
+
+.resultAlert{
+  background:#e9fbe9;
+  border-radius:14px;
+  padding:14px;
+  text-align:left;
+  margin: 14px 0;
+}
+
+.resultAlertTitle{
+  font-weight:800;
+  color:#1f8f4a;
+}
+
+.resultAlertText{
+  margin-top:6px;
+  font-size:13px;
+  color:#155c32;
+}
+
+/* ===== barras ===== */
+
+.resultBars{
+  margin-top: 14px;
+}
+
+.resultBarBlock{
+  margin-bottom: 18px;
+}
+
+.resultBarLabel{
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.resultBarRow{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:#666;
+}
+
+.resultTrack{
+  position:relative;
+  height:8px;
+  border-radius:999px;
+  background: linear-gradient(to right,#3ecf8e,#facc15,#ef4444);
+  margin-top:6px;
+}
+
+.resultMarker{
+  position:absolute;
+  top:-18px;
+  transform: translateX(-50%);
+  text-align:center;
+}
+
+.resultYou{
+  font-size:10px;
+  background:#111;
+  color:#fff;
+  padding:2px 6px;
+  border-radius:999px;
+  margin-bottom:2px;
+}
+
+.resultDot{
+  width:10px;
+  height:10px;
+  background:#7b3fe4;
+  border-radius:50%;
+  margin:0 auto;
+}
+
+.resultBarPct{
+  text-align:right;
+  font-size:12px;
+  color:#666;
+  margin-top:4px;
+}
+
+.card {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+#screen img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+/* Subtítulo das perguntas */
+#screen p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+@media (max-width: 420px) {
+  #screen p {
+    font-size: 14.5px;
+  }
+
+  .optionLabel {
+    font-size: 15px;
+  }
+
+  .optionDesc {
+    font-size: 13px;
+  }
+}
+
+/* Cards de opção: alinhamento igual ao original */
+.opt.optionCard {
+  justify-content: flex-start !important;
+  text-align: left !important;
+  padding-left: 16px;
+}
+
+/* Ícone sempre colado à esquerda */
+.optionIcon {
+  margin-right: 12px;
+}
+
+/* Texto ocupa a largura toda e não fica “centralizando” */
+.optionText {
+  flex: 1;
+}
+
+.optionIcon {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  border-radius: 14px;
+}
+
+/* ===== GRID DE IMAGENS (etapas com estágios) ===== */
+
+.gridLabel {
+  margin-top: 12px;
+  font-weight: 900;
+  font-size: 17px;       /* 👈 aumenta o título */
+  color: #111;
+  line-height: 1.25;
+}
+
+.gridDesc {
+  margin-top: 8px;
+  font-size: 15px;       /* 👈 aumenta o texto explicativo */
+  line-height: 1.55;
+  color: #333;
+}
+
+@media (max-width: 420px) {
+  .gridLabel {
+    font-size: 16px;
+  }
+
+  .gridDesc {
+    font-size: 14.5px;
+  }
+}
+
+/* subtítulo da pergunta */
+.qSub{
+  font-size: 14px;
+  line-height: 1.5;
+  color:#111;
+  margin: 6px 0 14px;
+}
+
+/* Subtítulo das perguntas */
+.qSub{
+  font-size: 16px;
+  line-height: 1.5;
+  color:#111;
+  margin: 6px 0 18px;
+}
+
+/* =========================
+   CÍRCULO DO RESULTADO (91%)
+========================= */
+
+.resultCircleWrap{
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 20px;
+}
+
+.resultCircleImg{
+  width: 160px;   /* 👈 controla o tamanho aqui */
+  max-width: 90%;
+  height: auto;
+}
+
+.topLogo{
+  display:flex;
+  justify-content:center;
+  margin: 0px 0 10px;
+}
+
+.topLogo img{
+  height: 62px;
+  width: auto;
+  max-width: 90%;
+  display:block;
+}
